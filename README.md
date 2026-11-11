@@ -28,7 +28,7 @@ farmeort-deploy/
 ## Requisitos
 
 - .NET SDK 10
-- Node 22.22 o superior
+- Node 22.22 o superior (en Mac, `brew install node` o el instalador de nodejs.org; no `node@22`)
 - Docker
 - cloudflared (solo para publicar en internet)
 
@@ -37,7 +37,7 @@ farmeort-deploy/
 ```bash
 # 1. Base de datos (desde backend/Datos)
 cd backend/Datos
-cp .env.example .env            # Windows: copy .env.example .env, y cambiá la contraseña
+cp .env.example .env            # y cambiá la contraseña (funciona igual en PowerShell)
 docker compose up -d
 
 # 2. Publicar la API (desde backend)
@@ -46,17 +46,19 @@ dotnet publish src/FarmeORT.WebApi -c Release -o Aplicacion
 
 # 3. Correr lo publicado (Mac o Linux)
 cd Aplicacion
-export ConnectionStrings__FarmeORT="Server=localhost,1433;Database=FarmeORT;User Id=sa;Password=<la del .env>;Encrypt=False;TrustServerCertificate=True"
-export Cors__OrigenesPermitidos__0="http://localhost:8080"
+export ConnectionStrings__FarmeORT='Server=localhost,1433;Database=FarmeORT;User Id=sa;Password=la-del-.env;Encrypt=False;TrustServerCertificate=True'
+export Cors__OrigenesPermitidos__0='http://localhost:8080'
 dotnet FarmeORT.WebApi.dll --urls http://localhost:5080
 ```
+
+Cambiá `la-del-.env` por tu contraseña. Las comillas van simples: con dobles, la terminal cambia los `$` y `!` de la contraseña.
 
 En Windows (PowerShell), el paso 3 es:
 
 ```powershell
 cd Aplicacion
-$env:ConnectionStrings__FarmeORT = "Server=localhost,1433;Database=FarmeORT;User Id=sa;Password=<la del .env>;Encrypt=False;TrustServerCertificate=True"
-$env:Cors__OrigenesPermitidos__0 = "http://localhost:8080"
+$env:ConnectionStrings__FarmeORT = 'Server=localhost,1433;Database=FarmeORT;User Id=sa;Password=la-del-.env;Encrypt=False;TrustServerCertificate=True'
+$env:Cors__OrigenesPermitidos__0 = 'http://localhost:8080'
 dotnet FarmeORT.WebApi.dll --urls http://localhost:5080
 ```
 
