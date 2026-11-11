@@ -1,0 +1,38 @@
+<h2>Skills</h2>
+
+<form (ngSubmit)="crear()">
+  <label>Código <input name="codigo" [(ngModel)]="nueva.codigo" required /></label>
+  <label>Nombre <input name="nombre" [(ngModel)]="nueva.nombre" required /></label>
+  <label>Categoría <input name="categoria" [(ngModel)]="nueva.categoria" required /></label>
+  <button type="submit">Crear</button>
+</form>
+
+@if (error()) {
+  <p class="mensaje-error">{{ error() }}</p>
+}
+@if (ok()) {
+  <p class="mensaje-ok">{{ ok() }}</p>
+}
+
+<table>
+  <thead>
+    <tr><th>Código</th><th>Nombre</th><th>Categoría</th><th>Estado</th><th></th></tr>
+  </thead>
+  <tbody>
+    @for (skill of skills(); track skill.id) {
+      <tr>
+        <td>{{ skill.codigo }}</td>
+        <td>{{ skill.nombre }}</td>
+        <td>{{ skill.categoria }}</td>
+        <td>{{ skill.activa ? 'Activa' : 'Inactiva' }}</td>
+        <td>
+          @if (skill.activa) {
+            <button type="button" (click)="desactivar(skill)">Desactivar</button>
+          }
+        </td>
+      </tr>
+    } @empty {
+      <tr><td colspan="5">No hay skills (o la API no respondió).</td></tr>
+    }
+  </tbody>
+</table>

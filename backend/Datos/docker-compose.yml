@@ -1,0 +1,23 @@
+# SQL Server 2025 en un contenedor, para correr la API en cualquier sistema operativo.
+# Uso (desde la carpeta Datos):
+#   cp .env.example .env      # y poné una contraseña fuerte en MSSQL_SA_PASSWORD
+#   docker compose up -d
+# En Mac con chip Apple la imagen corre emulada (Docker Desktop > Settings > General >
+# "Use Rosetta for x86_64/amd64 emulation"). Necesita al menos 2 GB de memoria para Docker.
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2025-latest
+    container_name: farmeort-sql
+    platform: linux/amd64
+    restart: unless-stopped
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Express"
+      MSSQL_SA_PASSWORD: "${MSSQL_SA_PASSWORD:?Definí MSSQL_SA_PASSWORD en el archivo .env}"
+    ports:
+      - "1433:1433"
+    volumes:
+      - farmeort_sql:/var/opt/mssql
+
+volumes:
+  farmeort_sql:

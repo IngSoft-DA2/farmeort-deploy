@@ -1,0 +1,14 @@
+# Compilados
+bin/
+obj/
+Aplicacion/
+
+# Configuración con secretos: nunca al repo
+appsettings.Development.json
+Datos/.env
+
+# IDE
+.vs/
+.idea/
+*.user
+.DS_Store

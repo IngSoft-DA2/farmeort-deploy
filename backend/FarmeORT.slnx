@@ -1,0 +1,15 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/FarmeORT.Dominio/FarmeORT.Dominio.csproj" />
+    <Project Path="src/FarmeORT.DTOs/FarmeORT.DTOs.csproj" />
+    <Project Path="src/FarmeORT.Fabrica/FarmeORT.Fabrica.csproj" />
+    <Project Path="src/FarmeORT.Importacion.Contratos/FarmeORT.Importacion.Contratos.csproj" />
+    <Project Path="src/FarmeORT.Importadores.Json/FarmeORT.Importadores.Json.csproj" />
+    <Project Path="src/FarmeORT.Importadores.Xml/FarmeORT.Importadores.Xml.csproj" />
+    <Project Path="src/FarmeORT.IRepositorios/FarmeORT.IRepositorios.csproj" />
+    <Project Path="src/FarmeORT.IServicios/FarmeORT.IServicios.csproj" />
+    <Project Path="src/FarmeORT.Repositorios/FarmeORT.Repositorios.csproj" />
+    <Project Path="src/FarmeORT.Servicios/FarmeORT.Servicios.csproj" />
+    <Project Path="src/FarmeORT.WebApi/FarmeORT.WebApi.csproj" />
+  </Folder>
+</Solution>

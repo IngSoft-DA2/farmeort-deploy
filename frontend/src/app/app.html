@@ -1,0 +1,25 @@
+<header>
+  <h1>FarmeORT <small>demo de deploy · DA2</small></h1>
+  <nav>
+    <a routerLink="/skills" routerLinkActive="activo">Skills</a>
+    <a routerLink="/importar" routerLinkActive="activo">Importar</a>
+  </nav>
+</header>
+
+<section class="estado" [class.ok]="salud()?.baseDeDatosConectada" [class.error]="errorSalud()">
+  <span><strong>API:</strong> {{ api.url }}</span>
+  @if (salud(); as s) {
+    <span><strong>Estado:</strong> {{ s.estado }}</span>
+    <span><strong>Entorno:</strong> {{ s.entorno }}</span>
+    <span><strong>Importadores:</strong> {{ s.importadores.join(', ') || 'ninguno' }}</span>
+  } @else if (errorSalud()) {
+    <span>{{ errorSalud() }}</span>
+  } @else {
+    <span>Consultando…</span>
+  }
+  <button type="button" (click)="consultarSalud()">Reintentar</button>
+</section>
+
+<main>
+  <router-outlet />
+</main>

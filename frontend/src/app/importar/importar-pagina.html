@@ -1,0 +1,41 @@
+<h2>Importar skills</h2>
+
+<p>
+  <label>
+    Importador
+    <select #sel (change)="elegir(sel.value)">
+      <option value="">Elegí un importador</option>
+      @for (importador of importadores(); track importador.nombre) {
+        <option [value]="importador.nombre">{{ importador.nombre }}</option>
+      }
+    </select>
+  </label>
+  <button type="button" (click)="cargarImportadores()">Actualizar lista</button>
+</p>
+
+@if (seleccionado(); as importador) {
+  <form (ngSubmit)="importar()">
+    @for (parametro of importador.parametros; track parametro.nombre) {
+      <label style="width: 100%">
+        {{ parametro.nombre }} — {{ parametro.descripcion }}
+        <textarea rows="6" [name]="parametro.nombre" [(ngModel)]="valores[parametro.nombre]"></textarea>
+      </label>
+    }
+    <button type="submit">Importar con {{ importador.nombre }}</button>
+  </form>
+}
+
+@if (error()) {
+  <p class="mensaje-error">{{ error() }}</p>
+}
+
+@if (resultado(); as r) {
+  <p class="mensaje-ok">{{ r.importador }}: {{ r.importadas }} importadas, {{ r.rechazadas.length }} rechazadas.</p>
+  @if (r.rechazadas.length) {
+    <ul>
+      @for (rechazada of r.rechazadas; track $index) {
+        <li>{{ rechazada.codigo || '(sin código)' }}: {{ rechazada.motivo }}</li>
+      }
+    </ul>
+  }
+}

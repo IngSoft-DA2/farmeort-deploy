@@ -1,0 +1,11 @@
+// Publicación del front en Cloudflare Workers, solo con archivos estáticos (sin código de Worker).
+// Se publica con `npm run publicar`, que NO recompila: así no se pisa el config.json editado en dist.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "farmeort-da2",
+  "compatibility_date": "2026-11-10",
+  "assets": {
+    "directory": "./dist/frontend/browser",
+    "not_found_handling": "single-page-application"
+  }
+}
