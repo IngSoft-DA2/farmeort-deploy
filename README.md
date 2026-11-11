@@ -2,7 +2,7 @@
 
 Una API en .NET 10 y un front en Angular 22, armados para practicar el deploy en Diseño de Aplicaciones 2 (Universidad ORT).
 
-**La guía paso a paso está en [da2ort.com → Tecnología → Deploy](https://da2ort.com/tecnologia/deploy).** Este repo es el proyecto que usa la guía: lo podés clonar, levantar y publicar siguiendo cada paso. En la guía, donde dice `TuProyecto`, acá es `FarmeORT`.
+**La guía paso a paso está en [da2ort.com → Tecnología → Deploy](https://da2ort.com/tecnologia/deploy).** Este repo es el proyecto que usa la guía: lo podés clonar, levantar y publicar siguiendo cada paso. Para tu proyecto, cambiá `FarmeORT` por el nombre de tu solución.
 
 ## Qué hay
 
